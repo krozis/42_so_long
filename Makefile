@@ -19,8 +19,6 @@ $(NAME):	$(OBJS)
 	make -C $(PATH_MLX)
 	${CC} $(SRCS) $(FLAGS) -o $(NAME)
 
-bonus: all
-
 clean:
 	make -C $(PATH_MLX) clean
 	${RM} ${OBJS}
@@ -31,4 +29,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: bonus all clean fclean re
+.PHONY: all clean fclean re
