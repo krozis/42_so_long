@@ -6,11 +6,21 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 15:52:16 by stelie            #+#    #+#             */
-/*   Updated: 2022/05/11 18:24:40 by krozis           ###   ########.fr       */
+/*   Updated: 2022/05/11 19:42:34 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+static void	init_game(t_game *game)
+{
+	game->map.row = 0;
+	game->map.clmn = 0;
+	game->map.coll = 0;
+	game->map.pos_x = 0;
+	game->map.pos_y = 0;
+	game->map.step = 0;	
+}
 
 int	main(int ac, char **av)
 {
@@ -18,8 +28,10 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (sl_print_error(ERR_ARGS));
-	ft_bzero(&game, sizeof(t_game));
-	return (0);
+	init_game(&game);
+	if (sl_check_file(&game, av) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
+	return (sl_print_error(SL_EXIT_SUCCESS));
 }
 
 /*
