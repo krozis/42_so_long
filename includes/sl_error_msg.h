@@ -6,7 +6,7 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 16:28:23 by krozis            #+#    #+#             */
-/*   Updated: 2022/05/11 17:27:53 by krozis           ###   ########.fr       */
+/*   Updated: 2022/05/11 18:35:11 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@
 /*
 	Errors in program process
 */
+# ifndef EXIT_FAILURE
+#  define EXIT_FAILURE 1
+# endif
+# ifndef EXIT_SUCCESS
+#  define EXIT_SUCCESS 0
+# endif
+# define SL_EXIT_SUCCESS "Program ran and shut correcty.\n"
 # define MLX_ERROR 1
 # define ERR_MAP_OPEN "Map file has not been opened.\n"
 
