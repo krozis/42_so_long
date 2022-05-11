@@ -6,7 +6,7 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 14:21:21 by stelie            #+#    #+#             */
-/*   Updated: 2022/05/11 19:26:34 by krozis           ###   ########.fr       */
+/*   Updated: 2022/05/11 19:59:38 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,14 @@ typedef struct s_text
 
 typedef struct s_map
 {
-	int	row;
-	int	clmn;
-	int	coll;
-	int	pos_x;
-	int	pos_y;
-	int	step;
+	int		row;
+	int		clmn;
+	char	**tab;
+	int		exit;
+	int		coll;
+	int		pos_x;
+	int		pos_y;
+	int		step;
 }				t_map;
 
 typedef struct s_game
@@ -73,6 +75,6 @@ int	so_long(void);
 	FUNCTIONS: Errors
 */
 int	sl_print_error(char *s);
-int	sl_check_file(char **file);
+int	sl_check_file(t_game *game, char **file);
 
 #endif

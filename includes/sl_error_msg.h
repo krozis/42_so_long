@@ -6,7 +6,7 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 16:28:23 by krozis            #+#    #+#             */
-/*   Updated: 2022/05/11 19:35:04 by krozis           ###   ########.fr       */
+/*   Updated: 2022/05/11 19:46:18 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 */
 # define ERR_EXTENSION "Map file has a wrong extension (*.ber format only).\n"
 # define ERR_ARGS "No Argument or too much argument (just one is required).\n"
-# define ERR_EXISTS "File does not exist.\n"
+# define ERR_EXISTS "File does not exist or can't be opened.\n"
 # define ERR_MAP_SMALL "Map is too small.\n"
 # define ERR_MAP_RECTANGLE "Map is not a rectangle.\n"
 # define ERR_MAP_WALLS "Map is not fully surrounded by walls.\n"
