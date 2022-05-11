@@ -1,32 +1,77 @@
-SRCS =	so_long.c\
-			main.c
+#Name
+NAME 		= 	so_long
 
-OBJS = ${SRCS:.c=.o}
+#Commands
+CC			= 	gcc
+DMK			=	mkdir -p
+RM			=	rm -rf
+AR			=	ar rc
+MK			=	make -s -C
 
-PATH_MLX = minilibx-linux
-CC = gcc 
-CFLAGS = #-Wall -Wextra -Werror
-RM = rm -f
-NAME = so_long
-FLAGS = -Lmlx_linux -lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+#Compilation flags
+INCLUDES	=	-I$(H_DIR) -I$(LFT_DIR)includes -I$(MLX_DIR)
+FLAGS		=	$(WFLAGS) $(MFLAGS)
+WFLAGS		=	#-Wall -Werror -Wextra
+MFLAGS		= 	-lmlx -L mlx -lXext -lX11 -lm -lz
+OPT_FLAGS	=	-03
+MEM_FLAGS	=	-g3 -fsanitize=address
 
-all: ${NAME}
+#Directories
+H_DIR		=	includes/
+SRC_DIR		=	src/
+OBJ_DIR		=	obj/
+LFT_DIR		=	libft/
+MLX_DIR		=	mlx/
 
-.c.o:
-	${CC} ${CFLAGS} -I/usr/include -Imlx_linux -c $< -o ${<:.c=.o}
+#Libft
+MK_LFT		=	$(MK) $(LFT_DIR)
+LFT			=	$(LFT_DIR)libft.a
 
-$(NAME):	$(OBJS)
-	make -C $(PATH_MLX)
-	${CC} $(SRCS) $(FLAGS) -o $(NAME)
+#MinilibX
+MK_MLX		=	$(MK) $(MLX_DIR) > /dev/null 2>&1
+MLX			=	$(MLX_DIR)libmlx_Linux.a
 
+#Source files
+SRC_FILES	=	so_long.c\
+
+OBJ_FILES	=	$(SRC_FILES:.c=.o)
+
+SRCS		=	$(addprefix $(SRC_DIR), $(SRC_FILES))
+OBJS		=	$(addprefix $(OBJ_DIR), $(OBJ_FILES))
+
+#---------------------#
+
+all:	${NAME}
+
+libft:
+			@echo -n "\n"
+			@echo -n "COMPILING LIBFT..."
+			@$(MK_LFT)
+			@echo "\033[32m\t\t[OK]\033[0m\n"
+
+mlx:
+			@echo -n "\n"
+			@echo -n "COMPILING MINILIBX..."
+			@$(MK_MLX)
+			@echo "\033[32m\t\t[OK]\033[0m\n"
+
+$(NAME):	libft mlx $(OBJS)
+			@echo -n "\n"
+			@echo -n "COMPILING SO_LONG..."
+			@$(CC) $(OBJS) $(LFT) -o $@ $(FLAGS) 
+			@echo "\033[32m\t\t[OK]\033[0m\n"
+
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+				@$(DMK) $(OBJ_DIR)
+				@$(CC) -c  $(INCLUDES) $< -o $@ $(FLAGS)
 clean:
-	make -C $(PATH_MLX) clean
-	${RM} ${OBJS}
+	@$(MK_LFT) clean
+	@$(MK_MLX) clean
+	$(RM) $(OBJ_DIR)
 
 fclean: clean
-	make -C $(PATH_MLX) clean
-	${RM} ${NAME}
+	$(RM) $(NAME) $(MLX) $(LFT)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all libft mlx clean fclean re
