@@ -6,7 +6,7 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 14:21:21 by stelie            #+#    #+#             */
-/*   Updated: 2022/05/11 18:23:36 by krozis           ###   ########.fr       */
+/*   Updated: 2022/05/11 19:26:34 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,12 @@
 # ifndef WINDOW_WIDTH
 #  define WINDOW_WIDTH 600
 # endif
+
 # ifndef WINDOW_HEIGHT
 #  define WINDOW_HEIGHT 300
 # endif
+
+# define EXT_TYPE ".ber"
 
 typedef struct s_data
 {
@@ -49,7 +52,7 @@ typedef struct s_text
 typedef struct s_map
 {
 	int	row;
-	int	col;
+	int	clmn;
 	int	coll;
 	int	pos_x;
 	int	pos_y;
@@ -70,5 +73,6 @@ int	so_long(void);
 	FUNCTIONS: Errors
 */
 int	sl_print_error(char *s);
+int	sl_check_file(char **file);
 
 #endif
