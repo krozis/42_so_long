@@ -33,6 +33,7 @@ MLX			=	$(MLX_DIR)libmlx_Linux.a
 
 #Source files
 SRC_FILES	=	so_long.c\
+				sl_errors.c\
 
 OBJ_FILES	=	$(SRC_FILES:.c=.o)
 
