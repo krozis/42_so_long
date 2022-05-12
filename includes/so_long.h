@@ -6,7 +6,7 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 14:21:21 by stelie            #+#    #+#             */
-/*   Updated: 2022/05/12 11:24:12 by krozis           ###   ########.fr       */
+/*   Updated: 2022/05/12 11:48:56 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_map
 	char	**tab;
 	int		exit;
 	int		coll;
+	int		player;
 	int		pos_x;
 	int		pos_y;
 	int		step;
@@ -79,8 +80,10 @@ typedef struct s_game
 	FUNCTIONS: Errors
 */
 int		sl_print_error(char *s);
+int		sl_print_error_free_map(char *msg, t_map *map);
 int		sl_check_file(t_game *game, char **file);
 int		sl_map_walled(t_map *map);
+int		sl_check_items(t_map *map);
 
 /*
 	FUNCTIONS: Map init

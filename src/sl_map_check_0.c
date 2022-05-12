@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_check_file.c                                    :+:      :+:    :+:   */
+/*   sl_map_check_0.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 19:10:50 by krozis            #+#    #+#             */
-/*   Updated: 2022/05/12 11:26:49 by krozis           ###   ########.fr       */
+/*   Updated: 2022/05/12 11:49:25 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,10 +106,10 @@ int	sl_check_file(t_game *game, char **av)
 	if (sl_copy_map(av, &game->map) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	sl_resize_map(&game->map);
-	if (sl_check_map_char(&game->map) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
-	if (sl_check_rectangle(&game->map) == EXIT_FAILURE
-		|| sl_map_walled(&game->map) == EXIT_FAILURE)
+	if (sl_check_map_char(&game->map) == EXIT_FAILURE
+		|| sl_check_rectangle(&game->map) == EXIT_FAILURE
+		|| sl_map_walled(&game->map) == EXIT_FAILURE
+		|| sl_check_items(&game->map) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	sl_free_map_tab(&game->map);
 	return (EXIT_SUCCESS);
