@@ -6,11 +6,38 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 23:32:17 by krozis            #+#    #+#             */
-/*   Updated: 2022/05/12 10:55:54 by krozis           ###   ########.fr       */
+/*   Updated: 2022/05/12 11:30:05 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	sl_map_walled(t_map *map)
+{
+	int	i;
+
+	i = 0;
+	while (i < map->clmn)
+	{
+		if (map->tab[0][i] != WALL || map->tab[map->row - 1][i] != WALL)
+		{
+			sl_free_map_tab(map);
+			return (sl_print_error(ERR_MAP_WALLS));
+		}
+		i++;
+	}
+	i = 0;
+	while (i < map->row)
+	{
+		if (map->tab[i][0] != WALL || map->tab[i][map->clmn - 1] != WALL)
+		{
+			sl_free_map_tab(map);
+			return (sl_print_error(ERR_MAP_WALLS));
+		}
+		i++;
+	}
+	return (EXIT_SUCCESS);
+}
 
 static int	sl_map_tab_error(int fd, char *line, t_map *map)
 {

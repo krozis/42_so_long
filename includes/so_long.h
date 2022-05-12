@@ -6,7 +6,7 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 14:21:21 by stelie            #+#    #+#             */
-/*   Updated: 2022/05/12 11:14:34 by krozis           ###   ########.fr       */
+/*   Updated: 2022/05/12 11:24:12 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@
 # endif
 
 # define ALLOWED_CHAR "01CEP"
+# define GROUND '0'
+# define WALL '1'
+# define ITEM 'C'
+# define EXIT 'E'
+# define PLAYER 'P'
 # define EXT_TYPE ".ber"
 
 typedef struct s_data
@@ -75,6 +80,7 @@ typedef struct s_game
 */
 int		sl_print_error(char *s);
 int		sl_check_file(t_game *game, char **file);
+int		sl_map_walled(t_map *map);
 
 /*
 	FUNCTIONS: Map init
