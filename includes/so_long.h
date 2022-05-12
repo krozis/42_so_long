@@ -6,7 +6,7 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 14:21:21 by stelie            #+#    #+#             */
-/*   Updated: 2022/05/11 19:59:38 by krozis           ###   ########.fr       */
+/*   Updated: 2022/05/12 11:14:34 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 #  define WINDOW_HEIGHT 300
 # endif
 
+# define ALLOWED_CHAR "01CEP"
 # define EXT_TYPE ".ber"
 
 typedef struct s_data
@@ -69,12 +70,23 @@ typedef struct s_game
 	t_text	text;
 }				t_game;
 
-int	so_long(void);
-
 /*
 	FUNCTIONS: Errors
 */
-int	sl_print_error(char *s);
-int	sl_check_file(t_game *game, char **file);
+int		sl_print_error(char *s);
+int		sl_check_file(t_game *game, char **file);
+
+/*
+	FUNCTIONS: Map init
+*/
+//int		sl_map_tab_error(int fd, char *line, t_map *map);
+int		sl_copy_map(char **av, t_map *map);
+void	sl_free_map_tab(t_map *map);
+void	sl_resize_map(t_map *map);
+
+/*
+	DEBUG
+*/
+void	sl_display_map(t_map *map);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 16:28:23 by krozis            #+#    #+#             */
-/*   Updated: 2022/05/11 19:46:18 by krozis           ###   ########.fr       */
+/*   Updated: 2022/05/12 11:13:47 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define ERR_EXISTS "File does not exist or can't be opened.\n"
 # define ERR_MAP_SMALL "Map is too small.\n"
 # define ERR_MAP_RECTANGLE "Map is not a rectangle.\n"
+# define ERR_MAP_CHAR "Map must only be composed by the following char: 01CEP\n"
 # define ERR_MAP_WALLS "Map is not fully surrounded by walls.\n"
 # define ERR_MAP_NO_COLLECTIBLE "Map must contain at least one collectible.\n"
 # define ERR_MAP_NO_EXIT "Map must contain at least one exit.\n"
@@ -37,5 +38,6 @@
 # define SL_EXIT_SUCCESS "Program ran and shut correcty.\n"
 # define MLX_ERROR 1
 # define ERR_MAP_OPEN "Map file has not been opened.\n"
+# define ERR_MALLOC "Error during dynamic allocation process.\n"
 
 #endif
