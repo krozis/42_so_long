@@ -6,7 +6,7 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 18:17:27 by krozis            #+#    #+#             */
-/*   Updated: 2022/05/11 18:39:23 by krozis           ###   ########.fr       */
+/*   Updated: 2022/05/12 11:10:38 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,19 @@ int	sl_print_error(char *msg)
 		ft_printf("\033[32m\n\t%s\033[0m\n", msg);
 		return (EXIT_SUCCESS);
 	}
+	ft_printf("\033[31m\n\t%s\033[0m\n", "Error\n");
 	ft_printf("\033[31m\n\t%s\033[0m\n", msg);
 	return (EXIT_FAILURE);
+}
+
+void	sl_display_map(t_map *map)
+{
+	int	i;
+
+	i = 0;
+	while (map->tab[i])
+	{
+		ft_printf("|%s|%i\n", map->tab[i], ft_strlen(map->tab[i]));
+		i++;
+	}
 }
