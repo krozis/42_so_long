@@ -6,7 +6,7 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 14:01:47 by krozis            #+#    #+#             */
-/*   Updated: 2022/05/12 15:32:22 by krozis           ###   ########.fr       */
+/*   Updated: 2022/05/12 17:49:43 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,10 @@ void	sl_free_textures(t_game *game)
 
 void	sl_free_end(t_game *game)
 {
-	mlx_destroy_window(game->data.mlx, game->data.win);
+	if (game->data.win != NULL)
+		mlx_destroy_window(game->data.mlx, game->data.win);
 	sl_free_textures(game);
+//	if (game->data.mlx != NULL)
 	mlx_destroy_display(game->data.mlx);
 	free(game->data.mlx);
 	sl_free_map_tab(&game->map);

@@ -40,6 +40,8 @@ SRC_FILES	=	so_long.c\
 				sl_map_check_2.c\
 				sl_game_process.c\
 				sl_mlx_init.c\
+				sl_display.c\
+				sl_hook.c\
 
 OBJ_FILES	=	$(SRC_FILES:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 14:21:21 by stelie            #+#    #+#             */
-/*   Updated: 2022/05/12 15:40:19 by krozis           ###   ########.fr       */
+/*   Updated: 2022/05/12 17:45:47 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 //# include "mlx_int.h"
 # include "libft.h"
 # include "sl_error_msg.h"
+# include <X11/keysym.h>
 
 # ifndef WINDOW_WIDTH
 #  define WINDOW_WIDTH 600
@@ -25,11 +26,12 @@
 #  define WINDOW_HEIGHT 300
 # endif
 
+# define PIXELS 32
 # define WIN_NAME "./so_long"
 # define ALLOWED_CHAR "01CEP"
 # define GROUND '0'
 # define WALL '1'
-# define ITEM 'C'
+# define COLLECTIBLE 'C'
 # define EXIT 'E'
 # define PLAYER 'P'
 # define EXT_TYPE ".ber"
@@ -117,6 +119,18 @@ int		sl_textures_init(t_game *game);
 void	sl_free_map_tab(t_map *map);
 void	sl_free_textures(t_game *game);
 void	sl_free_end(t_game *game);
+
+/*
+	FUNCTIONS: draw
+*/
+void	sl_draw_map(t_game *game);
+
+/*
+	FUNCTIONS: Hook
+*/
+int		sl_print_key(int keycode);
+int		sl_no_event(void	*ptr);
+int		sl_press_touch(int keycode, t_game *game);
 
 /*
 	DEBUG
