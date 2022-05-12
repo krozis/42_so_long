@@ -6,7 +6,7 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 23:32:17 by krozis            #+#    #+#             */
-/*   Updated: 2022/05/12 11:45:26 by krozis           ###   ########.fr       */
+/*   Updated: 2022/05/12 15:37:39 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,6 @@ void	sl_resize_map(t_map *map)
 		map->tab[i] = ft_str_cut_before(tmp, '\n');
 		free(tmp);
 		i++;
-	}
-}
-
-void	sl_free_map_tab(t_map *map)
-{
-	int	i;
-
-	i = 0;
-	if (map->tab)
-	{
-		while (map->tab[i])
-		{
-			free(map->tab[i]);
-			i++;
-		}
-		free(map->tab);
 	}
 }
 

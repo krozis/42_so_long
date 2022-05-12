@@ -6,7 +6,7 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 11:32:24 by krozis            #+#    #+#             */
-/*   Updated: 2022/05/12 11:49:42 by krozis           ###   ########.fr       */
+/*   Updated: 2022/05/12 15:37:58 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,30 @@ int	sl_map_walled(t_map *map)
 		i++;
 	}
 	return (EXIT_SUCCESS);
+}
+
+int	sl_check_textures(void)
+{
+	int	fd;
+
+	fd = open(F_COLL, O_RDONLY);
+	if (fd == -1 || (read(fd, NULL, 0) == -1))
+		return (sl_print_error(ERR_NO_TEXTURES));
+	close(fd);
+	fd = open(F_EXIT, O_RDONLY);
+	if (fd == -1 || (read(fd, NULL, 0) == -1))
+		return (sl_print_error(ERR_NO_TEXTURES));
+	close(fd);
+	fd = open(F_PLAYER, O_RDONLY);
+	if (fd == -1 || (read(fd, NULL, 0) == -1))
+		return (sl_print_error(ERR_NO_TEXTURES));
+	close(fd);
+	fd = open(F_GROUND, O_RDONLY);
+	if (fd == -1 || (read(fd, NULL, 0) == -1))
+		return (sl_print_error(ERR_NO_TEXTURES));
+	close(fd);
+	fd = open(F_WALL, O_RDONLY);
+	if (fd == -1 || (read(fd, NULL, 0) == -1))
+		return (sl_print_error(ERR_NO_TEXTURES));
+	close(fd);
 }

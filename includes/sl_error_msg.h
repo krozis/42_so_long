@@ -6,14 +6,14 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 16:28:23 by krozis            #+#    #+#             */
-/*   Updated: 2022/05/12 11:50:16 by krozis           ###   ########.fr       */
+/*   Updated: 2022/05/12 14:39:24 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SL_ERROR_MSG_H
 # define SL_ERROR_MSG_H
 /*
-	Errors in map file
+	Errors in map files
 */
 # define ERR_EXTENSION "Map file has a wrong extension (*.ber format only).\n"
 # define ERR_ARGS "No Argument or too much argument (just one is required).\n"
@@ -25,6 +25,7 @@
 # define ERR_MAP_NO_COLLECTIBLE "Map must contain at least one collectible.\n"
 # define ERR_MAP_NO_EXIT "Map must contain at least one exit.\n"
 # define ERR_MAP_NO_PLAYER_POS "Map must contain ONE initial player position.\n"
+# define ERR_NO_TEXTURES "Missing or invalid texture(s) in textures folder.\n"
 
 /*
 	Errors in program process
@@ -39,5 +40,6 @@
 # define MLX_ERROR 1
 # define ERR_MAP_OPEN "Map file has not been opened.\n"
 # define ERR_MALLOC "Error during dynamic allocation process.\n"
+# define ERR_MLX "Error with the MinilibX\n"
 
 #endif

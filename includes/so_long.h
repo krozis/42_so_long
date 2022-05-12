@@ -6,7 +6,7 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 14:21:21 by stelie            #+#    #+#             */
-/*   Updated: 2022/05/12 11:48:56 by krozis           ###   ########.fr       */
+/*   Updated: 2022/05/12 15:40:19 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 #  define WINDOW_HEIGHT 300
 # endif
 
+# define WIN_NAME "./so_long"
 # define ALLOWED_CHAR "01CEP"
 # define GROUND '0'
 # define WALL '1'
@@ -32,6 +33,11 @@
 # define EXIT 'E'
 # define PLAYER 'P'
 # define EXT_TYPE ".ber"
+# define F_COLL "./textures/collectible.xpm"
+# define F_EXIT "./textures/exit.xpm"
+# define F_PLAYER "./textures/player.xpm"
+# define F_GROUND "./textures/ground.xpm"
+# define F_WALL "./textures/wall.xpm"
 
 typedef struct s_data
 {
@@ -51,15 +57,15 @@ typedef struct s_text
 	t_img	wall;
 	t_img	ground;
 	t_img	player;
-	t_img	collectible;
+	t_img	collec;
 	t_img	exit;
 }				t_text;
 
 typedef struct s_map
 {
+	char	**tab;
 	int		row;
 	int		clmn;
-	char	**tab;
 	int		exit;
 	int		coll;
 	int		player;
@@ -92,6 +98,25 @@ int		sl_check_items(t_map *map);
 int		sl_copy_map(char **av, t_map *map);
 void	sl_free_map_tab(t_map *map);
 void	sl_resize_map(t_map *map);
+int		sl_check_textures(void);
+
+/*
+	FUNCTIONS: Game process
+*/
+int		sl_game_launch(t_game *game);
+
+/*
+	FUNCTIONS: MLX use
+*/
+int		sl_mlx_start(t_game *game);
+int		sl_textures_init(t_game *game);
+
+/*
+	FUNCTIONS: Free
+*/
+void	sl_free_map_tab(t_map *map);
+void	sl_free_textures(t_game *game);
+void	sl_free_end(t_game *game);
 
 /*
 	DEBUG
