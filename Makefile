@@ -34,9 +34,12 @@ MLX			=	$(MLX_DIR)libmlx_Linux.a
 #Source files
 SRC_FILES	=	so_long.c\
 				sl_errors.c\
+				sl_free.c\
 				sl_map_check_0.c\
 				sl_map_check_1.c\
 				sl_map_check_2.c\
+				sl_game_process.c\
+				sl_mlx_init.c\
 
 OBJ_FILES	=	$(SRC_FILES:.c=.o)
 
