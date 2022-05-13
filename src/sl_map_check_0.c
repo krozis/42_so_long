@@ -6,16 +6,11 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 19:10:50 by krozis            #+#    #+#             */
-/*   Updated: 2022/05/12 14:48:38 by krozis           ###   ########.fr       */
+/*   Updated: 2022/05/13 13:46:22 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-/*
-	To display the map (in console mode):
-*/
-	//sl_display_map(&game->map);
 
 static int	sl_check_map_char(t_map *map)
 {

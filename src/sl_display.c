@@ -6,7 +6,7 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:57:52 by krozis            #+#    #+#             */
-/*   Updated: 2022/05/13 13:27:13 by krozis           ###   ########.fr       */
+/*   Updated: 2022/05/13 13:40:09 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,17 @@ void	sl_draw_map(t_game *game)
 			y++;
 		}
 		x++;
+	}
+}
+
+void	sl_display_map(t_map *map)
+{
+	int	i;
+
+	i = 0;
+	while (map->tab[i])
+	{
+		ft_printf("|%s|%i\n", map->tab[i], ft_strlen(map->tab[i]));
+		i++;
 	}
 }

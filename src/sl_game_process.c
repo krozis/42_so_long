@@ -6,11 +6,27 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 11:55:39 by krozis            #+#    #+#             */
-/*   Updated: 2022/05/13 13:25:54 by krozis           ###   ########.fr       */
+/*   Updated: 2022/05/13 13:47:13 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+static t_bool	sl_move_possible(t_game *game, int key);
+
+/*
+	To display the map (in console mode):
+	sl_display_map(&game->map);
+*/	
+
+static int	sl_press_key(int key, t_game *game)
+{
+	if (key == XK_Escape)
+		mlx_loop_end(game->data.mlx);
+	if (key == XK_Up || key == XK_Down || key == XK_Left || key == XK_Right)
+		sl_move_possible(game, key);
+	return (EXIT_SUCCESS);
+}
 
 static int	sl_game_end(t_game *game)
 {
@@ -41,7 +57,7 @@ static int	sl_move(t_game *game, int y, int x)
 	return (game_state);
 }
 
-t_bool	sl_move_possible(t_game *game, int key)
+static t_bool	sl_move_possible(t_game *game, int key)
 {
 	if (key == XK_Up)
 		if (game->map.tab[game->map.pos_y - 1][game->map.pos_x] != WALL
@@ -75,7 +91,6 @@ int	sl_game_launch(t_game *game)
 	if (sl_textures_init(game) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	sl_draw_map(game);
-	mlx_loop_hook(game->data.win, &sl_no_event, game);
 	mlx_key_hook(game->data.win, &sl_press_key, game);
 	mlx_loop(game->data.mlx);
 	sl_free_end(game);
