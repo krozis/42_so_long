@@ -6,7 +6,7 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 16:28:23 by krozis            #+#    #+#             */
-/*   Updated: 2022/05/12 14:39:24 by krozis           ###   ########.fr       */
+/*   Updated: 2022/05/13 13:12:00 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@
 # define ERR_MAP_OPEN "Map file has not been opened.\n"
 # define ERR_MALLOC "Error during dynamic allocation process.\n"
 # define ERR_MLX "Error with the MinilibX\n"
+# define GAME_WIN_MSG "Congratulations, you win!\n"
 
 #endif

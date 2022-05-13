@@ -6,32 +6,23 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 14:21:21 by stelie            #+#    #+#             */
-/*   Updated: 2022/05/12 17:45:47 by krozis           ###   ########.fr       */
+/*   Updated: 2022/05/13 13:51:50 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 # include "mlx.h"
-//# include "mlx_int.h"
 # include "libft.h"
 # include "sl_error_msg.h"
 # include <X11/keysym.h>
-
-# ifndef WINDOW_WIDTH
-#  define WINDOW_WIDTH 600
-# endif
-
-# ifndef WINDOW_HEIGHT
-#  define WINDOW_HEIGHT 300
-# endif
 
 # define PIXELS 32
 # define WIN_NAME "./so_long"
 # define ALLOWED_CHAR "01CEP"
 # define GROUND '0'
 # define WALL '1'
-# define COLLECTIBLE 'C'
+# define COLL 'C'
 # define EXIT 'E'
 # define PLAYER 'P'
 # define EXT_TYPE ".ber"
@@ -40,6 +31,7 @@
 # define F_PLAYER "./textures/player.xpm"
 # define F_GROUND "./textures/ground.xpm"
 # define F_WALL "./textures/wall.xpm"
+# define GAME_WIN 777
 
 typedef struct s_data
 {
@@ -80,32 +72,33 @@ typedef struct s_game
 {
 	t_map	map;
 	t_data	data;
-	t_img	img;
 	t_text	text;
+	int		game_state;
 }				t_game;
-
-/*
-	FUNCTIONS: Errors
-*/
-int		sl_print_error(char *s);
-int		sl_print_error_free_map(char *msg, t_map *map);
-int		sl_check_file(t_game *game, char **file);
-int		sl_map_walled(t_map *map);
-int		sl_check_items(t_map *map);
-
-/*
-	FUNCTIONS: Map init
-*/
-//int		sl_map_tab_error(int fd, char *line, t_map *map);
-int		sl_copy_map(char **av, t_map *map);
-void	sl_free_map_tab(t_map *map);
-void	sl_resize_map(t_map *map);
-int		sl_check_textures(void);
 
 /*
 	FUNCTIONS: Game process
 */
 int		sl_game_launch(t_game *game);
+
+/*
+	FUNCTIONS: Map check and init
+*/
+int		sl_copy_map(char **av, t_map *map);
+void	sl_free_map_tab(t_map *map);
+void	sl_resize_map(t_map *map);
+int		sl_check_textures(void);
+int		sl_check_file(t_game *game, char **file);
+int		sl_map_walled(t_map *map);
+int		sl_check_items(t_map *map);
+
+/*
+	FUNCTIONS: Errors and free
+*/
+int		sl_print_error(char *s);
+int		sl_print_error_free_map(char *msg, t_map *map);
+void	sl_free_map_tab(t_map *map);
+void	sl_free_end(t_game *game);
 
 /*
 	FUNCTIONS: MLX use
@@ -114,23 +107,9 @@ int		sl_mlx_start(t_game *game);
 int		sl_textures_init(t_game *game);
 
 /*
-	FUNCTIONS: Free
-*/
-void	sl_free_map_tab(t_map *map);
-void	sl_free_textures(t_game *game);
-void	sl_free_end(t_game *game);
-
-/*
-	FUNCTIONS: draw
+	FUNCTIONS: Display
 */
 void	sl_draw_map(t_game *game);
-
-/*
-	FUNCTIONS: Hook
-*/
-int		sl_print_key(int keycode);
-int		sl_no_event(void	*ptr);
-int		sl_press_touch(int keycode, t_game *game);
 
 /*
 	DEBUG
