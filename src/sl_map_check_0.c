@@ -6,7 +6,7 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 19:10:50 by krozis            #+#    #+#             */
-/*   Updated: 2022/05/13 13:46:22 by krozis           ###   ########.fr       */
+/*   Updated: 2022/05/13 15:57:45 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static int	sl_check_map_char(t_map *map)
 	int	j;
 
 	i = 0;
-	while (map->tab[i])
+	while (i < map->row)
 	{
 		j = 0;
-		while (map->tab[i][j])
+		while (j < map->clmn)
 		{
 			if (!ft_incharset(map->tab[i][j], ALLOWED_CHAR))
 			{
