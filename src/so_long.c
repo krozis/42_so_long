@@ -6,7 +6,7 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 15:52:16 by stelie            #+#    #+#             */
-/*   Updated: 2022/05/12 14:49:14 by krozis           ###   ########.fr       */
+/*   Updated: 2022/05/13 13:28:33 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	init_game(t_game *game)
 {
+	game->game_state = 0;
 	game->map.tab = NULL;
 	game->map.row = 0;
 	game->map.clmn = 0;
