@@ -6,7 +6,7 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 11:55:39 by krozis            #+#    #+#             */
-/*   Updated: 2022/05/13 14:22:58 by krozis           ###   ########.fr       */
+/*   Updated: 2022/05/13 15:48:44 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ static int	sl_press_key(int key, t_game *game)
 	if (key == XK_Escape)
 		mlx_loop_end(game->data.mlx);
 	if (key == XK_Up || key == XK_Down || key == XK_Left || key == XK_Right)
+		sl_move_possible(game, key);
+	if (key == XK_W || key == XK_S || key == XK_A || key == XK_D)
+		sl_move_possible(game, key);
+	if (key == XK_w || key == XK_s || key == XK_a || key == XK_d)
 		sl_move_possible(game, key);
 	return (EXIT_SUCCESS);
 }
@@ -65,16 +69,16 @@ static int	sl_move(t_game *game, int y, int x)
 
 static void	sl_move_possible(t_game *game, int key)
 {
-	if (key == XK_Up)
+	if (key == XK_Up || key == XK_W || key == XK_w)
 		if (game->map.tab[game->map.pos_y - 1][game->map.pos_x] != WALL)
 			game->game_state = sl_move(game, -1, 0);
-	if (key == XK_Down)
+	if (key == XK_Down || key == XK_S || key == XK_s)
 		if (game->map.tab[game->map.pos_y + 1][game->map.pos_x] != WALL)
 			game->game_state = sl_move(game, 1, 0);
-	if (key == XK_Left)
+	if (key == XK_Left || key == XK_A || key == XK_a)
 		if (game->map.tab[game->map.pos_y][game->map.pos_x - 1] != WALL)
 			game->game_state = sl_move(game, 0, -1);
-	if (key == XK_Right)
+	if (key == XK_Right || key == XK_D || key == XK_d)
 		if (game->map.tab[game->map.pos_y][game->map.pos_x + 1] != WALL)
 			game->game_state = sl_move(game, 0, 1);
 	if (game->game_state == GAME_WIN)
