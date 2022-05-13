@@ -6,7 +6,7 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 11:55:39 by krozis            #+#    #+#             */
-/*   Updated: 2022/05/13 13:24:49 by krozis           ###   ########.fr       */
+/*   Updated: 2022/05/13 13:25:54 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	sl_game_end(t_game *game)
 	mlx_loop_end(game->data.mlx);
 }
 
-int	sl_move(t_game *game, int y, int x)
+static int	sl_move(t_game *game, int y, int x)
 {
 	int	game_state;
 
