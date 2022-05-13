@@ -6,7 +6,7 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 11:32:24 by krozis            #+#    #+#             */
-/*   Updated: 2022/05/13 14:14:18 by krozis           ###   ########.fr       */
+/*   Updated: 2022/05/13 16:00:21 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,4 +102,5 @@ int	sl_check_textures(void)
 	if (fd == -1 || (read(fd, NULL, 0) == -1))
 		return (sl_print_error(ERR_NO_TEXTURES));
 	close(fd);
+	return (EXIT_SUCCESS);
 }
