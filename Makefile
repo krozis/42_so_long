@@ -10,8 +10,8 @@ MK			=	make -s -C
 
 #Compilation flags
 INCLUDES	=	-I$(H_DIR) -I$(LFT_DIR)includes -I$(MLX_DIR)
-FLAGS		=	$(WFLAGS) $(MFLAGS)
-WFLAGS		=	#-fsanitize=address -Wall -Werror -Wextra
+FLAGS		=	$(WFLAGS) $(MFLAGS) # $(MEM_FLAGS)
+WFLAGS		=	-Wall -Werror -Wextra
 MFLAGS		= 	-lmlx -L mlx -lXext -lX11 -lm -lz
 OPT_FLAGS	=	-03
 MEM_FLAGS	=	-g3 -fsanitize=address
