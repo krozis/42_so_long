@@ -6,13 +6,13 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 11:55:39 by krozis            #+#    #+#             */
-/*   Updated: 2022/05/13 13:47:13 by krozis           ###   ########.fr       */
+/*   Updated: 2022/05/13 14:22:58 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static t_bool	sl_move_possible(t_game *game, int key);
+static void	sl_move_possible(t_game *game, int key);
 
 /*
 	To display the map (in console mode):
@@ -28,7 +28,7 @@ static int	sl_press_key(int key, t_game *game)
 	return (EXIT_SUCCESS);
 }
 
-static int	sl_game_end(t_game *game)
+static void	sl_game_end(t_game *game)
 {
 	ft_printf(GAME_WIN_MSG);
 	mlx_loop_end(game->data.mlx);
@@ -39,11 +39,16 @@ static int	sl_move(t_game *game, int y, int x)
 	int	game_state;
 
 	game_state = 0;
-	game->map.step++;
 	if (game->map.tab[game->map.pos_y + y][game->map.pos_x + x] == GROUND)
 		game->map.tab[game->map.pos_y][game->map.pos_x] = GROUND;
 	else if (game->map.tab[game->map.pos_y + y][game->map.pos_x + x] == COLL)
+	{
 		game->map.tab[game->map.pos_y][game->map.pos_x] = GROUND;
+		game->map.coll -= 1;
+	}
+	else if (game->map.tab[game->map.pos_y + y][game->map.pos_x + x] == EXIT
+		&& game->map.coll)
+		return (game_state);
 	else if (game->map.tab[game->map.pos_y + y][game->map.pos_x + x] == EXIT)
 	{
 		game->map.tab[game->map.pos_y][game->map.pos_x] = GROUND;
@@ -51,37 +56,29 @@ static int	sl_move(t_game *game, int y, int x)
 	}
 	game->map.pos_y += y;
 	game->map.pos_x += x;
+	game->map.step++;
 	game->map.tab[game->map.pos_y][game->map.pos_x] = PLAYER;
 	ft_printf("Step count: %i\n", game->map.step);
 	sl_draw_map(game);
 	return (game_state);
 }
 
-static t_bool	sl_move_possible(t_game *game, int key)
+static void	sl_move_possible(t_game *game, int key)
 {
 	if (key == XK_Up)
-		if (game->map.tab[game->map.pos_y - 1][game->map.pos_x] != WALL
-			|| (game->map.tab[game->map.pos_y - 1][game->map.pos_x] == EXIT
-			&& game->map.coll == 0))
+		if (game->map.tab[game->map.pos_y - 1][game->map.pos_x] != WALL)
 			game->game_state = sl_move(game, -1, 0);
 	if (key == XK_Down)
-		if (game->map.tab[game->map.pos_y + 1][game->map.pos_x] != WALL
-			|| (game->map.tab[game->map.pos_y + 1][game->map.pos_x] == EXIT
-			&& game->map.coll == 0))
+		if (game->map.tab[game->map.pos_y + 1][game->map.pos_x] != WALL)
 			game->game_state = sl_move(game, 1, 0);
 	if (key == XK_Left)
-		if (game->map.tab[game->map.pos_y][game->map.pos_x - 1] != WALL
-			|| (game->map.tab[game->map.pos_y][game->map.pos_x - 1] == EXIT
-			&& game->map.coll == 0))
+		if (game->map.tab[game->map.pos_y][game->map.pos_x - 1] != WALL)
 			game->game_state = sl_move(game, 0, -1);
 	if (key == XK_Right)
-		if (game->map.tab[game->map.pos_y][game->map.pos_x + 1] != WALL
-			|| (game->map.tab[game->map.pos_y][game->map.pos_x + 1] == EXIT
-			&& game->map.coll == 0))
+		if (game->map.tab[game->map.pos_y][game->map.pos_x + 1] != WALL)
 			game->game_state = sl_move(game, 0, 1);
 	if (game->game_state == GAME_WIN)
 		sl_game_end(game);
-	return (TRUE);
 }
 
 int	sl_game_launch(t_game *game)
