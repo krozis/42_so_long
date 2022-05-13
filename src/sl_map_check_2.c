@@ -6,7 +6,7 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 11:32:24 by krozis            #+#    #+#             */
-/*   Updated: 2022/05/12 15:37:58 by krozis           ###   ########.fr       */
+/*   Updated: 2022/05/13 12:27:33 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ int	sl_check_items(t_map *map)
 		j = 0;
 		while (j < map->clmn)
 		{
-			if (map->tab[i][j] == 'C')
+			if (map->tab[i][j] == COLL)
 				map->coll++;
-			if (map->tab[i][j] == 'E')
+			if (map->tab[i][j] == EXIT)
 				map->exit++;
-			if (map->tab[i][j] == 'P')
+			if (map->tab[i][j] == PLAYER)
 			{
 				map->player++;
 				map->pos_x = j;
