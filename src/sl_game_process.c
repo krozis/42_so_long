@@ -6,7 +6,7 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 11:55:39 by krozis            #+#    #+#             */
-/*   Updated: 2022/05/13 15:48:44 by krozis           ###   ########.fr       */
+/*   Updated: 2022/05/13 16:39:49 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ int	sl_game_launch(t_game *game)
 		return (EXIT_FAILURE);
 	sl_draw_map(game);
 	mlx_key_hook(game->data.win, &sl_press_key, game);
+	mlx_hook(game->data.win, 33, (1L << 5), &mlx_loop_end, game->data.mlx);
 	mlx_loop(game->data.mlx);
 	sl_free_end(game);
 	return (EXIT_SUCCESS);
