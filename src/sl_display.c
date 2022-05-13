@@ -6,13 +6,13 @@
 /*   By: krozis <krozis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:57:52 by krozis            #+#    #+#             */
-/*   Updated: 2022/05/13 13:20:18 by krozis           ###   ########.fr       */
+/*   Updated: 2022/05/13 13:27:13 by krozis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	sl_draw_items(t_game *game, int x, int y)
+static void	sl_draw_items(t_game *game, int x, int y)
 {
 	if (game->map.tab[y][x] == EXIT)
 		mlx_put_image_to_window(game->data.mlx, game->data.win,
@@ -25,7 +25,7 @@ void	sl_draw_items(t_game *game, int x, int y)
 			game->text.player.img, x * PIXELS, y * PIXELS);
 }
 
-void	sl_draw_bg(t_game *game, int x, int y)
+static void	sl_draw_bg(t_game *game, int x, int y)
 {
 	if (game->map.tab[y][x] == WALL)
 		mlx_put_image_to_window(game->data.mlx, game->data.win,
