@@ -101,8 +101,8 @@ int	sl_check_file(t_game *game, char **av)
 	if (sl_copy_map(av, &game->map) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	sl_resize_map(&game->map);
-	if (sl_check_map_char(&game->map) == EXIT_FAILURE
-		|| sl_check_rectangle(&game->map) == EXIT_FAILURE
+	if (sl_check_rectangle(&game->map) == EXIT_FAILURE
+		|| sl_check_map_char(&game->map) == EXIT_FAILURE
 		|| sl_map_walled(&game->map) == EXIT_FAILURE
 		|| sl_check_items(&game->map) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
