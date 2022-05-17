@@ -68,7 +68,7 @@ $(NAME):	$(OBJS)
 all:	$(NAME)
 		
 clean:
-		$(RM) $(OBJS) $(OBJBONUS)
+		$(RM) $(OBJS)
 
 fclean:	clean
 		$(RM) $(NAME)
