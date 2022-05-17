@@ -73,7 +73,6 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 				@$(CC) -c  $(INCLUDES) $< -o $@ $(FLAGS)
 clean:
 	@$(MK_LFT) clean
-	@$(MK_MLX) clean
 	$(RM) $(OBJ_DIR)
 
 fclean: clean
